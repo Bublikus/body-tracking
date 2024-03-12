@@ -28,7 +28,7 @@ export const Video = () => {
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(75, webcamElement.width / webcamElement.height, 0.1, 1000);
     const renderer = new THREE.WebGLRenderer({ alpha: true });
-    renderer.setSize(webcamElement.width, webcamElement.height);
+    renderer.setSize(webcamElement.width, webcamElement.height * 2);
 
     if (sceneElRef.current) {
       sceneElRef.current.innerHTML = '';
@@ -83,7 +83,7 @@ export const Video = () => {
       sphere.position.x = kp.x * scaleFactor;
       sphere.position.y = -kp.y * scaleFactor;
       sphere.position.z = ((kp.z || 0) * scaleFactor) + zOffset;
-      scene?.add(sphere);
+      if (kp.score && kp.score > pointScoreThreshold) scene?.add(sphere);
 
       return { sphere, score: kp.score };
     }) || [];
@@ -154,8 +154,8 @@ export const Video = () => {
 
   return (
     <div className="relative max-w-full">
-      <video id="webcam" autoPlay playsInline width="640" height="480" className="max-w-full max-h-[50svh] rounded-2xl object-cover -scale-x-100"/>
-      <div ref={sceneElRef} className="max-w-full w-[640px] aspect-[640/480] max-h-[50svh] -scale-x-100"/>
+      <video id="webcam" autoPlay playsInline width="640" height="480" className="max-w-full max-h-[45svh] rounded-2xl object-cover -scale-x-100"/>
+      <div ref={sceneElRef} className="flex justify-center items-center max-w-full w-[640px] aspect-[640/480] max-h-[45svh] -scale-x-100"/>
     </div>
   );
 }
