@@ -18,18 +18,22 @@ const connections = [
 ];
 
 export const Video = () => {
-  const sceneRef = useRef();
   const sceneElRef = useRef<HTMLDivElement>(null);
-  const rendererRef = useRef(null);
-  const cameraRef = useRef(null);
+  const sceneRef = useRef<THREE.Scene>();
+  const rendererRef = useRef<THREE.Renderer>();
+  const cameraRef = useRef<THREE.Camera>();
 
   // Initialize Three.js scene
-  function initThreeJS(webcamElement) {
+  function initThreeJS(webcamElement: HTMLVideoElement) {
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(75, webcamElement.width / webcamElement.height, 0.1, 1000);
     const renderer = new THREE.WebGLRenderer({ alpha: true });
     renderer.setSize(webcamElement.width, webcamElement.height);
-    sceneElRef.current.appendChild?.(renderer.domElement);
+
+    if (sceneElRef.current) {
+      sceneElRef.current.innerHTML = '';
+      sceneElRef.current.appendChild(renderer.domElement);
+    }
 
     // Adjust camera position
     camera.position.z = 2;
@@ -40,13 +44,13 @@ export const Video = () => {
   }
 
   // Draw the pose using Three.js
-  function drawPose(pose) {
+  function drawPose(pose: poseDetection.Pose) {
     const scene = sceneRef.current;
     const renderer = rendererRef.current;
     const camera = cameraRef.current;
 
     // Clear the scene
-    while (scene.children.length > 0) {
+    while (scene && scene.children.length > 0) {
       scene.remove(scene.children[0]);
     }
 
@@ -65,7 +69,7 @@ export const Video = () => {
     const geometry = new THREE.SphereGeometry(sphereRadius, 32, 32);
     const lineMaterial = new THREE.MeshBasicMaterial({ color: 0x0000ff });
 
-    const points = pose.keypoints3D.filter((kp) => kp.score > pointScoreThreshold).map((kp, index) => {
+    const points = pose.keypoints3D?.map((kp, index) => {
       let material;
       if (index === 0 || index === 34) {
         material = materialRed;
@@ -78,14 +82,15 @@ export const Video = () => {
       const sphere = new THREE.Mesh(geometry, material);
       sphere.position.x = kp.x * scaleFactor;
       sphere.position.y = -kp.y * scaleFactor;
-      sphere.position.z = (kp.z * scaleFactor) + zOffset;
-      scene.add(sphere);
+      sphere.position.z = ((kp.z || 0) * scaleFactor) + zOffset;
+      scene?.add(sphere);
 
       return { sphere, score: kp.score };
-    });
+    }) || [];
 
     connections.forEach(([start, end]) => {
-      if (points[start]?.score > connectionScoreThreshold && points[end]?.score > connectionScoreThreshold) {
+      // @ts-ignore
+      if (points[start]?.score > connectionScoreThreshold && Number(points[end]?.score) > connectionScoreThreshold) {
         const startVec = new THREE.Vector3(points[start].sphere.position.x, points[start].sphere.position.y, points[start].sphere.position.z);
         const endVec = new THREE.Vector3(points[end].sphere.position.x, points[end].sphere.position.y, points[end].sphere.position.z);
 
@@ -94,11 +99,11 @@ export const Video = () => {
         const tubeGeometry = new THREE.TubeGeometry(path, 20, tubeRadius, 8, false);
 
         const line = new THREE.Mesh(tubeGeometry, lineMaterial);
-        scene.add(line);
+        scene?.add(line);
       }
     });
 
-    renderer.render(scene, camera);
+    if (scene && camera) renderer?.render(scene, camera);
   }
 
   // Load the model
@@ -148,9 +153,9 @@ export const Video = () => {
   }, []);
 
   return (
-    <div className="relative">
-      <video id="webcam" autoPlay playsInline width="640" height="480" className="-scale-x-100"></video>
-      <div ref={sceneElRef} className="absolute inset-0 -scale-x-100"/>
+    <div className="relative max-w-full">
+      <video id="webcam" autoPlay playsInline width="640" height="480" className="max-w-full -scale-x-100"></video>
+      <div ref={sceneElRef} className="max-w-full w-[640px] aspect-[640/480] -scale-x-100"/>
     </div>
   );
 }

@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6240047d-0133-47f8-a455-85a793f4c845" name="Changes" comment="Update format in workspace.xml&#10;&#10;The changes in this commit replace &lt;![CDATA[{ with { and &quot; with &amp;quot; in the workspace.xml file. This change prevents any potential parse errors due to special characters.">
+    <list default="true" id="6240047d-0133-47f8-a455-85a793f4c845" name="Changes" comment="Add human anatomy connections and improve rendering in Video component&#10;&#10;This update reorganizes the video rendering code, defining the connections based on human anatomy at a higher scope for reusability. It further modifies the points to filter for a certain score threshold and changes the rendering from lines to tubes for improved visibility. Visual adjustments are also made in page.tsx and global.css files. Additionally, minor updates are made to workspace.xml.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/globals.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/page.tsx" afterDir="false" />
@@ -54,22 +54,33 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;npm.dev.executor&quot;: &quot;Run&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.CommitDialog&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/Users/bublik/Documents/bublik/www/body-tracking/node_modules/typescript/lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "npm.build.executor": "Run",
+    "npm.dev.executor": "Run",
+    "settings.editor.selected.configurable": "project.propVCSSupport.CommitDialog",
+    "ts.external.directory.path": "/Users/bublik/Documents/bublik/www/body-tracking/node_modules/typescript/lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
-  <component name="RunManager">
+}]]></component>
+  <component name="RunManager" selected="npm.dev">
+    <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="build" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
     <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -82,6 +93,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.build" />
         <item itemvalue="npm.dev" />
       </list>
     </recent_temporary>
@@ -113,7 +125,15 @@
       <option name="project" value="LOCAL" />
       <updated>1710272468399</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Add human anatomy connections and improve rendering in Video component&#10;&#10;This update reorganizes the video rendering code, defining the connections based on human anatomy at a higher scope for reusability. It further modifies the points to filter for a certain score threshold and changes the rendering from lines to tubes for improved visibility. Visual adjustments are also made in page.tsx and global.css files. Additionally, minor updates are made to workspace.xml.">
+      <option name="closed" value="true" />
+      <created>1710278612155</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1710278612155</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -125,6 +145,7 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="Add body tracking feature with TensorFlow and Three.js&#10;&#10;This commit adds a body tracking feature to the application. This is accomplished by integrating TensorFlow and Three.js libraries. The tracking feature enables comparing user movements with professional athletes. Additionally, the project's metadata and dependencies in `package.json` have been updated accordingly." />
     <MESSAGE value="Update format in workspace.xml&#10;&#10;The changes in this commit replace &lt;![CDATA[{ with { and &quot; with &amp;quot; in the workspace.xml file. This change prevents any potential parse errors due to special characters." />
-    <option name="LAST_COMMIT_MESSAGE" value="Update format in workspace.xml&#10;&#10;The changes in this commit replace &lt;![CDATA[{ with { and &quot; with &amp;quot; in the workspace.xml file. This change prevents any potential parse errors due to special characters." />
+    <MESSAGE value="Add human anatomy connections and improve rendering in Video component&#10;&#10;This update reorganizes the video rendering code, defining the connections based on human anatomy at a higher scope for reusability. It further modifies the points to filter for a certain score threshold and changes the rendering from lines to tubes for improved visibility. Visual adjustments are also made in page.tsx and global.css files. Additionally, minor updates are made to workspace.xml." />
+    <option name="LAST_COMMIT_MESSAGE" value="Add human anatomy connections and improve rendering in Video component&#10;&#10;This update reorganizes the video rendering code, defining the connections based on human anatomy at a higher scope for reusability. It further modifies the points to filter for a certain score threshold and changes the rendering from lines to tubes for improved visibility. Visual adjustments are also made in page.tsx and global.css files. Additionally, minor updates are made to workspace.xml." />
   </component>
 </project>
