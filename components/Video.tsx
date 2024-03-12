@@ -154,8 +154,8 @@ export const Video = () => {
 
   return (
     <div className="relative max-w-full">
-      <video id="webcam" autoPlay playsInline width="640" height="480" className="max-w-full -scale-x-100"></video>
-      <div ref={sceneElRef} className="max-w-full w-[640px] aspect-[640/480] -scale-x-100"/>
+      <video id="webcam" autoPlay playsInline width="640" height="480" className="max-w-full max-h-[50svh] rounded-2xl object-cover -scale-x-100"/>
+      <div ref={sceneElRef} className="max-w-full w-[640px] aspect-[640/480] max-h-[50svh] -scale-x-100"/>
     </div>
   );
 }
