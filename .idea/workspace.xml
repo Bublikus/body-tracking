@@ -4,7 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6240047d-0133-47f8-a455-85a793f4c845" name="Changes" comment="Update Video component styles and workspace settings&#10;&#10;Two adjustments were made in this commit. In the Video component, the styling of the video and scene elements was updated to provide better UI appearance. The maximum height attribute and additional styles were added. In the workspace.xml, the task and changelist were updated reflecting enhancements in the Video component rendering.">
+    <list default="true" id="6240047d-0133-47f8-a455-85a793f4c845" name="Changes" comment="Update Video component and workspace settings&#10;&#10;This commit updates the styling and rendering logic of the Video component for better UI appearance and modifies workspace settings accordingly. Specifically, it adjusts the height attribute and adds styles to the video and scene elements, introduces a condition for adding points to a scene, and updates task details and local task counter in workspace.xml.">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/Video.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Video.tsx" afterDir="false" />
     </list>
@@ -147,7 +148,15 @@
       <option name="project" value="LOCAL" />
       <updated>1710280779971</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Update Video component and workspace settings&#10;&#10;This commit updates the styling and rendering logic of the Video component for better UI appearance and modifies workspace settings accordingly. Specifically, it adjusts the height attribute and adds styles to the video and scene elements, introduces a condition for adding points to a scene, and updates task details and local task counter in workspace.xml.">
+      <option name="closed" value="true" />
+      <created>1710281547301</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1710281547301</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -162,6 +171,7 @@
     <MESSAGE value="Add human anatomy connections and improve rendering in Video component&#10;&#10;This update reorganizes the video rendering code, defining the connections based on human anatomy at a higher scope for reusability. It further modifies the points to filter for a certain score threshold and changes the rendering from lines to tubes for improved visibility. Visual adjustments are also made in page.tsx and global.css files. Additionally, minor updates are made to workspace.xml." />
     <MESSAGE value="Refactor and improve video component rendering&#10;&#10;This commit refactors the rendering logic in the Video component by defining data and types with more precision. It enhances the drawing of poses by adopting a more error-tolerant approach. Furthermore, some CSS and workspace configurations were updated to accommodate these changes." />
     <MESSAGE value="Update Video component styles and workspace settings&#10;&#10;Two adjustments were made in this commit. In the Video component, the styling of the video and scene elements was updated to provide better UI appearance. The maximum height attribute and additional styles were added. In the workspace.xml, the task and changelist were updated reflecting enhancements in the Video component rendering." />
-    <option name="LAST_COMMIT_MESSAGE" value="Update Video component styles and workspace settings&#10;&#10;Two adjustments were made in this commit. In the Video component, the styling of the video and scene elements was updated to provide better UI appearance. The maximum height attribute and additional styles were added. In the workspace.xml, the task and changelist were updated reflecting enhancements in the Video component rendering." />
+    <MESSAGE value="Update Video component and workspace settings&#10;&#10;This commit updates the styling and rendering logic of the Video component for better UI appearance and modifies workspace settings accordingly. Specifically, it adjusts the height attribute and adds styles to the video and scene elements, introduces a condition for adding points to a scene, and updates task details and local task counter in workspace.xml." />
+    <option name="LAST_COMMIT_MESSAGE" value="Update Video component and workspace settings&#10;&#10;This commit updates the styling and rendering logic of the Video component for better UI appearance and modifies workspace settings accordingly. Specifically, it adjusts the height attribute and adds styles to the video and scene elements, introduces a condition for adding points to a scene, and updates task details and local task counter in workspace.xml." />
   </component>
 </project>
