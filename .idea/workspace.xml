@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6240047d-0133-47f8-a455-85a793f4c845" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-    </list>
+    <list default="true" id="6240047d-0133-47f8-a455-85a793f4c845" name="Changes" comment="Add body tracking feature with TensorFlow and Three.js&#10;&#10;This commit adds a body tracking feature to the application. This is accomplished by integrating TensorFlow and Three.js libraries. The tracking feature enables comparing user movements with professional athletes. Additionally, the project's metadata and dependencies in `package.json` have been updated accordingly." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -23,6 +18,7 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="PREVIEW_PUSH_ON_COMMIT_AND_PUSH" value="false" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitToolBoxStore">
@@ -51,7 +47,7 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "npm.dev.executor": "Run",
-    "settings.editor.selected.configurable": "vcs.Git",
+    "settings.editor.selected.configurable": "project.propVCSSupport.CommitDialog",
     "ts.external.directory.path": "/Users/bublik/Documents/bublik/www/body-tracking/node_modules/typescript/lib",
     "vue.rearranger.settings.migration": "true"
   }
@@ -82,11 +78,27 @@
       <option name="presentableId" value="Default" />
       <updated>1710263617982</updated>
       <workItem from="1710263618997" duration="31000" />
-      <workItem from="1710263665869" duration="8157000" />
+      <workItem from="1710263665869" duration="8289000" />
     </task>
+    <task id="LOCAL-00001" summary="Add body tracking feature with TensorFlow and Three.js&#10;&#10;This commit adds a body tracking feature to the application. This is accomplished by integrating TensorFlow and Three.js libraries. The tracking feature enables comparing user movements with professional athletes. Additionally, the project's metadata and dependencies in `package.json` have been updated accordingly.">
+      <option name="closed" value="true" />
+      <created>1710271941762</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1710271941762</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="Add body tracking feature with TensorFlow and Three.js&#10;&#10;This commit adds a body tracking feature to the application. This is accomplished by integrating TensorFlow and Three.js libraries. The tracking feature enables comparing user movements with professional athletes. Additionally, the project's metadata and dependencies in `package.json` have been updated accordingly." />
+    <option name="LAST_COMMIT_MESSAGE" value="Add body tracking feature with TensorFlow and Three.js&#10;&#10;This commit adds a body tracking feature to the application. This is accomplished by integrating TensorFlow and Three.js libraries. The tracking feature enables comparing user movements with professional athletes. Additionally, the project's metadata and dependencies in `package.json` have been updated accordingly." />
   </component>
 </project>
