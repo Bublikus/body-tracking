@@ -6,6 +6,17 @@ import * as tf from '@tensorflow/tfjs-core';
 import '@tensorflow/tfjs-backend-webgl';
 import * as THREE from 'three';
 
+// Define the connections based on human anatomy and keypoints order
+const connections = [
+  [0, 1], [1, 2], [2, 3], [0, 4], [4, 5], [5, 6], // Head to eyes
+  [7, 11], [8, 12], // Ears to shoulders
+  [11, 13], [13, 15], [15, 17], [17, 19], [19, 21], // Left arm
+  [12, 14], [14, 16], [16, 18], [18, 20], [20, 22], // Right arm
+  [11, 23], [23, 25], [25, 27], [27, 29], [29, 31], // Left leg
+  [12, 24], [24, 26], [26, 28], [28, 30], [30, 32], // Right leg
+  [23, 33], [24, 33], // Hips to body center
+];
+
 export const Video = () => {
   const sceneRef = useRef();
   const sceneElRef = useRef<HTMLDivElement>(null);
@@ -39,17 +50,22 @@ export const Video = () => {
       scene.remove(scene.children[0]);
     }
 
-    const scoreThreshold = 0.5; // Define a threshold for the keypoints' visibility
+    const pointScoreThreshold = 0.2;
+    const connectionScoreThreshold = 0.5;
     const scaleFactor = 5;
     const zOffset = -5;
+
+    // Adjust these values to change the dot sizes and line thickness
+    const sphereRadius = 0.2; // Larger for bigger dots
+    const tubeRadius = 0.2; // Larger for thicker lines
 
     const materialRed = new THREE.MeshBasicMaterial({ color: 0xff0000 });
     const materialGreen = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
     const materialOrange = new THREE.MeshBasicMaterial({ color: 0xffa500 });
-    const geometry = new THREE.SphereGeometry(0.05, 32, 32);
+    const geometry = new THREE.SphereGeometry(sphereRadius, 32, 32);
+    const lineMaterial = new THREE.MeshBasicMaterial({ color: 0x0000ff });
 
-    const points = pose.keypoints3D.map((kp, index) => {
-      // Use different colors based on the keypoint index
+    const points = pose.keypoints3D.filter((kp) => kp.score > pointScoreThreshold).map((kp, index) => {
       let material;
       if (index === 0 || index === 34) {
         material = materialRed;
@@ -68,27 +84,16 @@ export const Video = () => {
       return { sphere, score: kp.score };
     });
 
-    // Define the connections based on human anatomy and keypoints order
-    const connections = [
-      [0, 1], [1, 2], [2, 3], [0, 4], [4, 5], [5, 6], // Head to eyes
-      [7, 11], [8, 12], // Ears to shoulders
-      [11, 13], [13, 15], [15, 17], [17, 19], [19, 21], // Left arm
-      [12, 14], [14, 16], [16, 18], [18, 20], [20, 22], // Right arm
-      [11, 23], [23, 25], [25, 27], [27, 29], [29, 31], // Left leg
-      [12, 24], [24, 26], [26, 28], [28, 30], [30, 32], // Right leg
-      [23, 33], [24, 33], // Hips to body center
-    ];
-
-    const lineMaterial = new THREE.LineBasicMaterial({ color: 0x0000ff });
-
     connections.forEach(([start, end]) => {
-      if (points[start]?.score > scoreThreshold && points[end]?.score > scoreThreshold) {
-        const geometry = new THREE.BufferGeometry().setFromPoints([
-          new THREE.Vector3(points[start].sphere.position.x, points[start].sphere.position.y, points[start].sphere.position.z),
-          new THREE.Vector3(points[end].sphere.position.x, points[end].sphere.position.y, points[end].sphere.position.z),
-        ]);
+      if (points[start]?.score > connectionScoreThreshold && points[end]?.score > connectionScoreThreshold) {
+        const startVec = new THREE.Vector3(points[start].sphere.position.x, points[start].sphere.position.y, points[start].sphere.position.z);
+        const endVec = new THREE.Vector3(points[end].sphere.position.x, points[end].sphere.position.y, points[end].sphere.position.z);
 
-        const line = new THREE.Line(geometry, lineMaterial);
+        // Create a curve and then use TubeGeometry
+        const path = new THREE.LineCurve3(startVec, endVec);
+        const tubeGeometry = new THREE.TubeGeometry(path, 20, tubeRadius, 8, false);
+
+        const line = new THREE.Mesh(tubeGeometry, lineMaterial);
         scene.add(line);
       }
     });

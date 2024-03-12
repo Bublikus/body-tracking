@@ -31,3 +31,10 @@ body {
     text-wrap: balance;
   }
 }
+
+canvas {
+  aspect-ratio: 640 / 480;
+  max-width: 100%;
+  max-height: 100%;
+  width: 100%;
+}
